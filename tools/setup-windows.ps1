@@ -61,7 +61,28 @@ foreach ($skill in $globalSkills) {
     }
 }
 
-# 4. Summary
+# 4. Install plugins from manifest
+Write-Host ""
+Write-Host "🔌 Installing plugins from manifest..."
+if (Test-Path "$env:USERPROFILE\Claude_Global_Config\plugins_manifest.json") {
+    $manifest = Get-Content "$env:USERPROFILE\Claude_Global_Config\plugins_manifest.json" | ConvertFrom-Json
+
+    foreach ($pluginKey in $manifest.plugins.PSObject.Properties.Name) {
+        Write-Host "  Installing: $pluginKey"
+        try {
+            claude plugin install $pluginKey 2>$null
+        } catch {
+            Write-Host "  ⚠️  $pluginKey (already installed or unavailable)"
+        }
+    }
+
+    Write-Host ""
+    Write-Host "✅ Plugin installation complete"
+} else {
+    Write-Host "⚠️  No plugins_manifest.json found - skipping plugin installation"
+}
+
+# 5. Summary
 Write-Host ""
 Write-Host "====================================="
 Write-Host "✅ Setup Complete!"
@@ -72,4 +93,4 @@ Write-Host ""
 Write-Host "Next steps:"
 Write-Host "  1. Restart Claude Code"
 Write-Host "  2. Test: dir `$env:USERPROFILE\.claude\skills"
-Write-Host "  3. Claude Code will auto-discover all 24 global skills"
+Write-Host "  3. Claude Code will auto-discover all 24 global skills + installed plugins"

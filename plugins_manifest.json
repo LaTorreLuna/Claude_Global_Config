@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "plugins": {
+    "document-skills@anthropic-agent-skills": {
+      "version": "unknown",
+      "installedAt": "2025-10-24T07:09:59.697Z",
+      "lastUpdated": "2025-10-24T07:09:59.697Z",
+      "installPath": "/Users/astro/.claude/plugins/marketplaces/anthropic-agent-skills/",
+      "gitCommitSha": "c74d647e56e6daa12029b6acb11a821348ad044b",
+      "isLocal": true
+    },
+    "example-skills@anthropic-agent-skills": {
+      "version": "unknown",
+      "installedAt": "2025-10-24T07:09:59.697Z",
+      "lastUpdated": "2025-10-24T07:09:59.697Z",
+      "installPath": "/Users/astro/.claude/plugins/marketplaces/anthropic-agent-skills/",
+      "gitCommitSha": "c74d647e56e6daa12029b6acb11a821348ad044b",
+      "isLocal": true
+    },
+    "superpowers@superpowers-marketplace": {
+      "version": "3.2.3",
+      "installedAt": "2025-10-24T07:10:00.478Z",
+      "lastUpdated": "2025-10-24T07:10:00.478Z",
+      "installPath": "/Users/astro/.claude/plugins/cache/superpowers",
+      "gitCommitSha": "19e2997334eef29d0b4ab3c40a4bc124d200d1fb",
+      "isLocal": false
+    },
+    "elements-of-style@superpowers-marketplace": {
+      "version": "1.0.0",
+      "installedAt": "2025-10-24T10:53:59.401Z",
+      "lastUpdated": "2025-10-24T10:53:59.401Z",
+      "installPath": "/Users/astro/.claude/plugins/cache/elements-of-style",
+      "gitCommitSha": "6099c505c2a8eb066f3777f83a97d9d828f7954c",
+      "isLocal": false
+    },
+    "playwright-skill@playwright-skill": {
+      "version": "4.0.2",
+      "installedAt": "2025-10-24T11:13:33.832Z",
+      "lastUpdated": "2025-10-24T11:13:33.832Z",
+      "installPath": "/Users/astro/.claude/plugins/marketplaces/playwright-skill/",
+      "gitCommitSha": "2687009f83fb6e6e40c2d144e8280c2b04e0dd7e",
+      "isLocal": true
+    },
+    "project-planner-skill@claude-skills-marketplace": {
+      "version": "unknown",
+      "installedAt": "2025-10-24T17:51:41.747Z",
+      "lastUpdated": "2025-10-24T17:51:41.747Z",
+      "installPath": "/Users/astro/.claude/plugins/marketplaces/claude-skills-marketplace/project-planner-skill",
+      "gitCommitSha": "77ea09e7b810cde01f8d5bc924e0349e2ab1d5cb",
+      "isLocal": true
+    },
+    "claude-notifications-go@claude-notifications-go": {
+      "version": "1.0.0",
+      "installedAt": "2025-10-25T00:34:31.300Z",
+      "lastUpdated": "2025-10-25T00:34:31.300Z",
+      "installPath": "/Users/astro/.claude/plugins/marketplaces/claude-notifications-go/",
+      "gitCommitSha": "0469edff6729be5c7521cde58275d8bdea58adfc",
+      "isLocal": true
+    }
+  }
+}

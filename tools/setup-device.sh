@@ -117,7 +117,25 @@ else
     echo "✅ Already configured in shell"
 fi
 
-# 6. Summary
+# 6. Install plugins from manifest
+echo ""
+echo "🔌 Installing plugins from manifest..."
+if [ -f ~/Claude_Global_Config/plugins_manifest.json ]; then
+    # Extract plugin names from JSON
+    PLUGINS=$(cat ~/Claude_Global_Config/plugins_manifest.json | grep -o '"[^"]*@[^"]*"' | tr -d '"' | sort -u)
+
+    for plugin in $PLUGINS; do
+        echo "  Installing: $plugin"
+        claude plugin install "$plugin" 2>/dev/null || echo "  ⚠️  $plugin (already installed or unavailable)"
+    done
+
+    echo ""
+    echo "✅ Plugin installation complete"
+else
+    echo "⚠️  No plugins_manifest.json found - skipping plugin installation"
+fi
+
+# 7. Summary
 echo ""
 echo "==================================="
 echo "✅ Setup Complete!"
