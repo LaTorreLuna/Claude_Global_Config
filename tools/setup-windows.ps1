@@ -8,12 +8,13 @@ Write-Host "====================================="
 Write-Host ""
 
 # 1. Clone Git repo if not exists
-if (!(Test-Path "$env:USERPROFILE\Claude_Global_Config")) {
+if (!(Test-Path "$env:USERPROFILE\Claude_Code\Claude_Global_Config")) {
     Write-Host "📥 Cloning Claude_Global_Config from GitHub..."
-    gh repo clone LaTorreLuna/Claude_Global_Config "$env:USERPROFILE\Claude_Global_Config"
+    New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\Claude_Code" | Out-Null
+    gh repo clone LaTorreLuna/Claude_Global_Config "$env:USERPROFILE\Claude_Code\Claude_Global_Config"
 } else {
     Write-Host "✅ Claude_Global_Config already exists"
-    cd "$env:USERPROFILE\Claude_Global_Config"
+    cd "$env:USERPROFILE\Claude_Code\Claude_Global_Config"
     git pull
 }
 
@@ -54,7 +55,7 @@ $globalSkills = @(
 
 foreach ($skill in $globalSkills) {
     if (!(Test-Path $skill)) {
-        cmd /c mklink /J $skill "$env:USERPROFILE\Claude_Global_Config\skills\$skill" | Out-Null
+        cmd /c mklink /J $skill "$env:USERPROFILE\Claude_Code\Claude_Global_Config\skills\$skill" | Out-Null
         Write-Host "  ✅ $skill"
     } else {
         Write-Host "  ⏭️  $skill (already exists)"
@@ -64,8 +65,8 @@ foreach ($skill in $globalSkills) {
 # 4. Install plugins from manifest
 Write-Host ""
 Write-Host "🔌 Installing plugins from manifest..."
-if (Test-Path "$env:USERPROFILE\Claude_Global_Config\plugins_manifest.json") {
-    $manifest = Get-Content "$env:USERPROFILE\Claude_Global_Config\plugins_manifest.json" | ConvertFrom-Json
+if (Test-Path "$env:USERPROFILE\Claude_Code\Claude_Global_Config\plugins_manifest.json") {
+    $manifest = Get-Content "$env:USERPROFILE\Claude_Code\Claude_Global_Config\plugins_manifest.json" | ConvertFrom-Json
 
     foreach ($pluginKey in $manifest.plugins.PSObject.Properties.Name) {
         Write-Host "  Installing: $pluginKey"

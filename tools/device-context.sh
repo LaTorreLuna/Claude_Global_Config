@@ -56,13 +56,13 @@ export OBSIDIAN_VAULT=$(find_vault "Obsidian Vault")
 
 export CLAUDE_TOOLS="$HOME/.claude/tools"
 export CLAUDE_SKILLS="$HOME/.claude/skills"
-export CLAUDE_GLOBAL_CONFIG="$HOME/Claude_Global_Config"
+export CLAUDE_GLOBAL_CONFIG="$HOME/Claude_Code/Claude_Global_Config"
 
 # ============================================
 # Git Global Config Path
 # ============================================
 
-export CLAUDE_GLOBAL_GIT="$HOME/Claude_Global_Config"
+export CLAUDE_GLOBAL_GIT="$HOME/Claude_Code/Claude_Global_Config"
 
 # ============================================
 # Status Report
@@ -77,6 +77,6 @@ if [ "$1" = "--status" ]; then
     echo ""
     echo "Skill Counts:"
     echo "  Total skills: $(ls -1 $CLAUDE_SKILLS 2>/dev/null | wc -l)"
-    echo "  Global skills (Git): $(ls -la $CLAUDE_SKILLS 2>/dev/null | grep -c " -> $HOME/Claude_Global_Config")"
+    echo "  Global skills (Git): $(ls -la $CLAUDE_SKILLS 2>/dev/null | grep -c " -> $HOME/Claude_Code/Claude_Global_Config")"
     echo "  FUSD skills (Vault): $(ls -la $CLAUDE_SKILLS 2>/dev/null | grep -c "_Claude_Config/skills")"
 fi

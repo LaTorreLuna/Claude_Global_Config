@@ -43,10 +43,10 @@ Claude_Global_Config/
 
 ```bash
 # Clone repo
-gh repo clone LaTorreLuna/Claude_Global_Config ~/Claude_Global_Config
+gh repo clone LaTorreLuna/Claude_Global_Config ~/Claude_Code/Claude_Global_Config
 
 # Run setup (creates symlinks + installs plugins)
-~/Claude_Global_Config/tools/setup-device.sh
+~/Claude_Code/Claude_Global_Config/tools/setup-device.sh
 
 # Restart terminal
 ```
@@ -55,10 +55,10 @@ gh repo clone LaTorreLuna/Claude_Global_Config ~/Claude_Global_Config
 
 ```powershell
 # Clone repo
-gh repo clone LaTorreLuna/Claude_Global_Config "$env:USERPROFILE\Claude_Global_Config"
+gh repo clone LaTorreLuna/Claude_Global_Config "$env:USERPROFILE\Claude_Code\Claude_Global_Config"
 
 # Run setup (creates junctions + installs plugins)
-cd "$env:USERPROFILE\Claude_Global_Config\tools"
+cd "$env:USERPROFILE\Claude_Code\Claude_Global_Config\tools"
 .\setup-windows.ps1
 
 # Restart Claude Code
@@ -120,10 +120,10 @@ When you install new plugins on your main device:
 
 ```bash
 # Copy updated plugin list to repo
-cp ~/.claude/plugins/installed_plugins.json ~/Claude_Global_Config/plugins_manifest.json
+cp ~/.claude/plugins/installed_plugins.json ~/Claude_Code/Claude_Global_Config/plugins_manifest.json
 
 # Commit and push
-cd ~/Claude_Global_Config
+cd ~/Claude_Code/Claude_Global_Config
 git add plugins_manifest.json
 git commit -m "Update plugin manifest"
 git push
@@ -132,7 +132,7 @@ git push
 On other devices, just pull and run setup again:
 
 ```bash
-cd ~/Claude_Global_Config
+cd ~/Claude_Code/Claude_Global_Config
 git pull
 ./tools/setup-device.sh  # Mac/Linux
 # Or: .\tools\setup-windows.ps1  # Windows
@@ -142,13 +142,13 @@ git pull
 
 ### Adding New Skills
 
-1. Add skill to `~/Claude_Global_Config/skills/`
+1. Add skill to `~/Claude_Code/Claude_Global_Config/skills/`
 2. Commit and push to Git
 3. Setup script will automatically symlink it on other devices
 
 ### Removing Skills
 
-1. Remove from `~/Claude_Global_Config/skills/`
+1. Remove from `~/Claude_Code/Claude_Global_Config/skills/`
 2. Commit and push to Git
 3. Manually remove symlink on other devices: `rm ~/.claude/skills/skill-name`
 
@@ -166,8 +166,8 @@ git pull
 
 ```
 ~/.claude/skills/ (flat directory with symlinks)
-├── skill-1 → ~/Claude_Global_Config/skills/skill-1/
-├── skill-2 → ~/Claude_Global_Config/skills/skill-2/
+├── skill-1 → ~/Claude_Code/Claude_Global_Config/skills/skill-1/
+├── skill-2 → ~/Claude_Code/Claude_Global_Config/skills/skill-2/
 └── [22 more skills...]
 
 ~/.claude/plugins/ (managed by Claude Code)

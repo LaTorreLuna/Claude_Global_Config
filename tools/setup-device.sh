@@ -11,12 +11,13 @@ echo "==================================="
 echo ""
 
 # 1. Clone Git repo if not exists
-if [ ! -d ~/Claude_Global_Config ]; then
+if [ ! -d ~/Claude_Code/Claude_Global_Config ]; then
     echo "📥 Cloning Claude_Global_Config from GitHub..."
-    gh repo clone LaTorreLuna/Claude_Global_Config ~/Claude_Global_Config
+    mkdir -p ~/Claude_Code
+    gh repo clone LaTorreLuna/Claude_Global_Config ~/Claude_Code/Claude_Global_Config
 else
     echo "✅ Claude_Global_Config already exists"
-    cd ~/Claude_Global_Config && git pull
+    cd ~/Claude_Code/Claude_Global_Config && git pull
 fi
 
 # 2. Create ~/.claude/skills/ directory
@@ -57,7 +58,7 @@ GLOBAL_SKILLS=(
 
 for skill in "${GLOBAL_SKILLS[@]}"; do
     if [ ! -L "$skill" ]; then
-        ln -s ~/Claude_Global_Config/skills/"$skill" "$skill"
+        ln -s ~/Claude_Code/Claude_Global_Config/skills/"$skill" "$skill"
         echo "  ✅ $skill"
     else
         echo "  ⏭️  $skill (already exists)"
@@ -65,7 +66,7 @@ for skill in "${GLOBAL_SKILLS[@]}"; do
 done
 
 echo ""
-echo "📊 Global skills setup: $(ls -la | grep -c " -> $HOME/Claude_Global_Config") of 24"
+echo "📊 Global skills setup: $(ls -la | grep -c " -> $HOME/Claude_Code/Claude_Global_Config") of 24"
 
 # 4. Setup FUSD skills (Mac only - requires vault access)
 if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -73,7 +74,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     echo "🔍 Detecting FUSD vault..."
 
     # Source device-context to get FUSD_VAULT
-    source ~/Claude_Global_Config/tools/device-context.sh 2>/dev/null || true
+    source ~/Claude_Code/Claude_Global_Config/tools/device-context.sh 2>/dev/null || true
 
     if [ -n "$FUSD_VAULT" ] && [ -d "$FUSD_VAULT" ]; then
         echo "✅ FUSD vault found: $FUSD_VAULT"
@@ -111,7 +112,7 @@ echo ""
 echo "🔧 Setting up shell integration..."
 if ! grep -q "device-context.sh" ~/.zshrc 2>/dev/null && ! grep -q "device-context.sh" ~/.bashrc 2>/dev/null; then
     echo "# Claude Code device context" >> ~/.zshrc
-    echo "source ~/Claude_Global_Config/tools/device-context.sh" >> ~/.zshrc
+    echo "source ~/Claude_Code/Claude_Global_Config/tools/device-context.sh" >> ~/.zshrc
     echo "✅ Added to ~/.zshrc"
 else
     echo "✅ Already configured in shell"
@@ -120,9 +121,9 @@ fi
 # 6. Install plugins from manifest
 echo ""
 echo "🔌 Installing plugins from manifest..."
-if [ -f ~/Claude_Global_Config/plugins_manifest.json ]; then
+if [ -f ~/Claude_Code/Claude_Global_Config/plugins_manifest.json ]; then
     # Extract plugin names from JSON
-    PLUGINS=$(cat ~/Claude_Global_Config/plugins_manifest.json | grep -o '"[^"]*@[^"]*"' | tr -d '"' | sort -u)
+    PLUGINS=$(cat ~/Claude_Code/Claude_Global_Config/plugins_manifest.json | grep -o '"[^"]*@[^"]*"' | tr -d '"' | sort -u)
 
     for plugin in $PLUGINS; do
         echo "  Installing: $plugin"
@@ -142,7 +143,7 @@ echo "✅ Setup Complete!"
 echo "==================================="
 echo ""
 echo "Total skills: $(ls -1 ~/.claude/skills/ | wc -l)"
-echo "  Global (Git): $(ls -la ~/.claude/skills/ | grep -c " -> $HOME/Claude_Global_Config")"
+echo "  Global (Git): $(ls -la ~/.claude/skills/ | grep -c " -> $HOME/Claude_Code/Claude_Global_Config")"
 if [[ "$OSTYPE" == "darwin"* ]] && [ -n "$FUSD_VAULT" ]; then
     echo "  FUSD (Vault): $(ls -la ~/.claude/skills/ | grep -c "_Claude_Config/skills")"
 fi

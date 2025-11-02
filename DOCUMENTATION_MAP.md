@@ -22,7 +22,7 @@
 
 ### Level 1: Setup Guides (User-Facing, Active Use)
 
-**Location**: `/Users/astro/Claude_Global_Config/` (Git repo, syncs to all devices)
+**Location**: `/Users/astro/Claude_Code/Claude_Global_Config/` (Git repo, syncs to all devices)
 
 **Audience**: Anyone setting up Claude Code on a new device
 
@@ -30,9 +30,9 @@
 
 | File | Purpose | When to Use |
 |------|---------|-------------|
-| **[README.md](file:///Users/astro/Claude_Global_Config/README.md)** | Main setup guide for Mac/Linux/Windows | First time setup on ANY device |
-| **[WINDOWS_SETUP.md](file:///Users/astro/Claude_Global_Config/WINDOWS_SETUP.md)** | Windows-specific instructions | Windows device setup |
-| **[plugins_manifest.json](file:///Users/astro/Claude_Global_Config/plugins_manifest.json)** | Plugin installation list (7 plugins) | Auto-read by setup scripts |
+| **[README.md](file:///Users/astro/Claude_Code/Claude_Global_Config/README.md)** | Main setup guide for Mac/Linux/Windows | First time setup on ANY device |
+| **[WINDOWS_SETUP.md](file:///Users/astro/Claude_Code/Claude_Global_Config/WINDOWS_SETUP.md)** | Windows-specific instructions | Windows device setup |
+| **[plugins_manifest.json](file:///Users/astro/Claude_Code/Claude_Global_Config/plugins_manifest.json)** | Plugin installation list (7 plugins) | Auto-read by setup scripts |
 | **THIS FILE** | Navigation hub for all docs | Finding documentation |
 
 **What's Here**:
@@ -45,7 +45,7 @@
 
 ### Level 2: Technical Implementation (Scripts & Tools)
 
-**Location**: `/Users/astro/Claude_Global_Config/tools/` (Git repo)
+**Location**: `/Users/astro/Claude_Code/Claude_Global_Config/tools/` (Git repo)
 
 **Audience**: Developers maintaining the system
 
@@ -53,9 +53,9 @@
 
 | File | Platform | Purpose |
 |------|----------|---------|
-| **[setup-device.sh](file:///Users/astro/Claude_Global_Config/tools/setup-device.sh)** | Mac/Linux | Automated setup: symlinks + plugins |
-| **[setup-windows.ps1](file:///Users/astro/Claude_Global_Config/tools/setup-windows.ps1)** | Windows | Automated setup: junctions + plugins |
-| **[device-context.sh](file:///Users/astro/Claude_Global_Config/tools/device-context.sh)** | Mac/Linux | Environment detection utility |
+| **[setup-device.sh](file:///Users/astro/Claude_Code/Claude_Global_Config/tools/setup-device.sh)** | Mac/Linux | Automated setup: symlinks + plugins |
+| **[setup-windows.ps1](file:///Users/astro/Claude_Code/Claude_Global_Config/tools/setup-windows.ps1)** | Windows | Automated setup: junctions + plugins |
+| **[device-context.sh](file:///Users/astro/Claude_Code/Claude_Global_Config/tools/device-context.sh)** | Mac/Linux | Environment detection utility |
 
 **What They Do**:
 1. Clone Git repo
@@ -150,19 +150,19 @@
 
 ### For New Device Setup
 
-**Start here**: [README.md](file:///Users/astro/Claude_Global_Config/README.md) (Git repo root)
+**Start here**: [README.md](file:///Users/astro/Claude_Code/Claude_Global_Config/README.md) (Git repo root)
 
 **Mac/Linux**:
 ```bash
-gh repo clone LaTorreLuna/Claude_Global_Config ~/Claude_Global_Config
-~/Claude_Global_Config/tools/setup-device.sh
+gh repo clone LaTorreLuna/Claude_Code/Claude_Global_Config ~/Claude_Code/Claude_Global_Config
+~/Claude_Code/Claude_Global_Config/tools/setup-device.sh
 # Restart terminal
 ```
 
 **Windows**:
 ```powershell
-gh repo clone LaTorreLuna/Claude_Global_Config "$env:USERPROFILE\Claude_Global_Config"
-cd "$env:USERPROFILE\Claude_Global_Config\tools"
+gh repo clone LaTorreLuna/Claude_Code/Claude_Global_Config "$env:USERPROFILE\Claude_Code/Claude_Global_Config"
+cd "$env:USERPROFILE\Claude_Code/Claude_Global_Config\tools"
 .\setup-windows.ps1
 # Restart Claude Code
 ```
@@ -198,7 +198,7 @@ cd "$env:USERPROFILE\Claude_Global_Config\tools"
 **Plugin installation failing?**
 1. Verify `plugins_manifest.json` is valid JSON
 2. Re-run setup script to trigger auto-install
-3. Check [README.md](file:///Users/astro/Claude_Global_Config/README.md) - Plugin section
+3. Check [README.md](file:///Users/astro/Claude_Code/Claude_Global_Config/README.md) - Plugin section
 
 **FUSD skills not available (Windows)?**
 - Expected behavior - FUSD skills are Mac-only (Google Drive path dependencies)
@@ -211,11 +211,11 @@ cd "$env:USERPROFILE\Claude_Global_Config\tools"
 **Adding new global skills**:
 ```bash
 # 1. Add skill to Git repo
-mkdir ~/Claude_Global_Config/skills/new-skill
+mkdir ~/Claude_Code/Claude_Global_Config/skills/new-skill
 # ... create SKILL.md and files ...
 
 # 2. Commit and push
-cd ~/Claude_Global_Config
+cd ~/Claude_Code/Claude_Global_Config
 git add skills/new-skill
 git commit -m "Add new-skill"
 git push
@@ -231,10 +231,10 @@ git pull
 claude plugin install new-plugin
 
 # 2. Update manifest in Git
-cp ~/.claude/plugins/installed_plugins.json ~/Claude_Global_Config/plugins_manifest.json
+cp ~/.claude/plugins/installed_plugins.json ~/Claude_Code/Claude_Global_Config/plugins_manifest.json
 
 # 3. Commit and push
-cd ~/Claude_Global_Config
+cd ~/Claude_Code/Claude_Global_Config
 git add plugins_manifest.json
 git commit -m "Add new-plugin to manifest"
 git push
@@ -246,7 +246,7 @@ git pull
 
 **Updating existing skills**:
 ```bash
-cd ~/Claude_Global_Config
+cd ~/Claude_Code/Claude_Global_Config
 # Edit skill files
 git add skills/skill-name
 git commit -m "Update skill-name"
@@ -280,8 +280,8 @@ git pull  # Changes sync automatically via symlinks
 
 ```
 ~/.claude/skills/ (flat directory)
-├── advanced-sql-skill/ → ~/Claude_Global_Config/skills/advanced-sql-skill/
-├── article-extractor/ → ~/Claude_Global_Config/skills/article-extractor/
+├── advanced-sql-skill/ → ~/Claude_Code/Claude_Global_Config/skills/advanced-sql-skill/
+├── article-extractor/ → ~/Claude_Code/Claude_Global_Config/skills/article-extractor/
 ├── [... 22 more global skills ...]
 ├── fusd-document-taxonomy/ → $FUSD_VAULT/_Claude_Config/skills/fusd-document-taxonomy/
 ├── ghr-qualifications-configuration/ → $FUSD_VAULT/_Claude_Config/skills/ghr-qualifications-configuration/
@@ -415,7 +415,7 @@ git pull  # Changes sync automatically via symlinks
 
 ## Repository Information
 
-**GitHub Repository**: https://github.com/LaTorreLuna/Claude_Global_Config
+**GitHub Repository**: https://github.com/LaTorreLuna/Claude_Code/Claude_Global_Config
 
 **Branch**: main
 
@@ -509,10 +509,10 @@ The plugin manifest addition was critical to making this truly complete.
 ## Support & Contact
 
 **For issues or questions**:
-1. Check [README.md](file:///Users/astro/Claude_Global_Config/README.md) in Git repo
-2. Review [WINDOWS_SETUP.md](file:///Users/astro/Claude_Global_Config/WINDOWS_SETUP.md) for Windows issues
+1. Check [README.md](file:///Users/astro/Claude_Code/Claude_Global_Config/README.md) in Git repo
+2. Review [WINDOWS_SETUP.md](file:///Users/astro/Claude_Code/Claude_Global_Config/WINDOWS_SETUP.md) for Windows issues
 3. See migration project folder for historical context
-4. GitHub Issues: https://github.com/LaTorreLuna/Claude_Global_Config/issues
+4. GitHub Issues: https://github.com/LaTorreLuna/Claude_Code/Claude_Global_Config/issues
 
 ---
 
