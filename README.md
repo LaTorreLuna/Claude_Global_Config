@@ -2,6 +2,10 @@
 
 **Purpose**: Cross-platform Claude Code configuration synced via Git
 
+**Need help finding documentation?** See **[DOCUMENTATION_MAP.md](DOCUMENTATION_MAP.md)** - Complete navigation hub for all project docs
+
+---
+
 ## What Gets Synced
 
 ### ✅ User Skills (24 global)
@@ -29,6 +33,7 @@ Claude_Global_Config/
 ├── tools/                     # Setup and utility scripts
 ├── plugins_manifest.json      # Plugin installation list
 ├── README.md                  # This file
+├── DOCUMENTATION_MAP.md       # Navigation hub for ALL docs
 └── WINDOWS_SETUP.md          # Windows-specific guide
 ```
 
@@ -171,9 +176,27 @@ git pull
 └── marketplaces/ (local plugins)
 ```
 
+## Documentation
+
+**Complete project documentation map**: [DOCUMENTATION_MAP.md](DOCUMENTATION_MAP.md)
+
+This comprehensive MOC includes:
+- All setup guides (this file, Windows guide)
+- Migration history and project decisions
+- Technical research and architecture analysis
+- Troubleshooting resources
+- Maintenance workflows
+
+**Quick links**:
+- **Setting up new device?** → You're in the right place (see Quick Setup above)
+- **Understanding the project?** → [DOCUMENTATION_MAP.md](DOCUMENTATION_MAP.md)
+- **Windows setup?** → [WINDOWS_SETUP.md](WINDOWS_SETUP.md)
+- **Technical details?** → See DOCUMENTATION_MAP.md → Level 4: Technical Deep-Dive
+
 ## Support
 
 For issues or questions:
-- Check `WINDOWS_SETUP.md` for Windows-specific help
+- Check [DOCUMENTATION_MAP.md](DOCUMENTATION_MAP.md) for all documentation
+- Check [WINDOWS_SETUP.md](WINDOWS_SETUP.md) for Windows-specific help
 - Review setup scripts in `tools/` directory
-- See migration documentation in project folder
+- GitHub Issues: https://github.com/LaTorreLuna/Claude_Global_Config/issues
