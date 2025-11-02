@@ -11,10 +11,10 @@
 ## Quick Navigation
 
 **Need to...**
-- [Set up a new device?](#for-new-device-setup) → Use Setup Guides
-- [Understand what happened?](#for-historical-context) → Read Migration History
-- [Troubleshoot issues?](#for-troubleshooting--technical-deep-dive) → Check Technical Research
-- [Update the system?](#for-maintenance) → See Maintenance Workflows
+- [[#For New Device Setup|Set up a new device?]] → Use Setup Guides
+- [[#For Historical Context|Understand what happened?]] → Read Migration History
+- [[#For Troubleshooting & Technical Deep-Dive|Troubleshoot issues?]] → Check Technical Research
+- [[#For Maintenance|Update the system?]] → See Maintenance Workflows
 
 ---
 
