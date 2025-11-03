@@ -114,6 +114,55 @@ After setup, you'll have:
 ### Other
 - templater-obsidian
 
+## Automatic Bidirectional Sync
+
+The sync tool automatically handles adding local skills to Git and pulling new skills from other devices.
+
+### Running the Sync Tool
+
+```bash
+~/Claude_Code/Claude_Global_Config/tools/sync-skills.sh
+```
+
+### What It Does
+
+**Automatically:**
+1. ✅ Checks for new skills from other devices (pull)
+2. ✅ Detects local skills not in Git repo
+3. ✅ Prompts you to classify each skill:
+   - **[G]lobal** - Add to Git and sync everywhere
+   - **[P]roject** - Keep local only (project-specific)
+   - **[F]USD** - Move to FUSD vault (work-specific)
+   - **[S]kip** - Don't process now
+4. ✅ Copies global skills to Git repo
+5. ✅ Replaces local directory with symlink
+6. ✅ Commits and pushes to GitHub
+
+**Result:** Local skills become globally synced, automatically available on all devices after they pull.
+
+### Example Workflow
+
+```bash
+# On your new laptop (Device 3) with local skills
+cd ~/Claude_Code/Claude_Global_Config/tools
+./sync-skills.sh
+
+# Tool finds: my-custom-skill (not in Git)
+# You choose: [G] Global
+# Result: Skill copied to Git, committed, pushed
+
+# On other devices (Device 1 & 2)
+cd ~/Claude_Code/Claude_Global_Config
+./tools/sync-skills.sh  # Detects new skill, offers to pull
+# Result: my-custom-skill now available everywhere
+```
+
+### When to Run
+
+- **After installing Claude Code on a new device** (to sync local skills to Git)
+- **Periodically on all devices** (to pull skills from other devices)
+- **After creating new skills** (to make them globally available)
+
 ## Updating Plugins
 
 When you install new plugins on your main device:
@@ -142,6 +191,13 @@ git pull
 
 ### Adding New Skills
 
+**Recommended (Automatic):**
+```bash
+# Run the sync tool to automatically detect and sync new skills
+~/Claude_Code/Claude_Global_Config/tools/sync-skills.sh
+```
+
+**Manual Method:**
 1. Add skill to `~/Claude_Code/Claude_Global_Config/skills/`
 2. Commit and push to Git
 3. Setup script will automatically symlink it on other devices
