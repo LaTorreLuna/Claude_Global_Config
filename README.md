@@ -218,6 +218,57 @@ git pull
 
 *FUSD skills are vault-specific and only available on Mac with Google Drive access
 
+## Advanced: Shared Neo4j Knowledge Graph (Tailscale)
+
+**Share your Neo4j knowledge graph privately across all devices**
+
+If you use the `memento-dev` MCP server for persistent context storage, you can share the same Neo4j database across all your Claude Code instances using Tailscale (secure private VPN).
+
+### Why Use This?
+
+- ✅ All devices access the same knowledge graph
+- ✅ Context saved on one device is available on all devices
+- ✅ Complete privacy (encrypted VPN, data stays on your devices)
+- ✅ Works across different networks (home, work, travel)
+- ✅ No cloud storage or monthly fees
+
+### Quick Setup
+
+**See full guide**: [TAILSCALE_NEO4J_SETUP.md](TAILSCALE_NEO4J_SETUP.md)
+
+**1. Install Tailscale on all devices:**
+```bash
+brew install tailscale  # Mac
+sudo tailscale up
+```
+
+**2. Run the setup helper:**
+```bash
+~/Claude_Code/Claude_Global_Config/tools/tailscale-neo4j-setup.sh
+```
+
+The script will:
+- Detect if this is your primary device (where Neo4j runs) or secondary
+- Configure Neo4j to listen on Tailscale network (primary only)
+- Test connectivity between devices
+- Provide exact configuration for `.claude.json`
+
+**3. Update `.claude.json` with Tailscale IP**
+
+**Primary device** (uses localhost):
+```json
+"NEO4J_URI": "neo4j://localhost:7687"
+```
+
+**Secondary devices** (use primary's Tailscale IP):
+```json
+"NEO4J_URI": "neo4j://100.x.x.x:7687"
+```
+
+**Result**: All devices share the same knowledge graph! Context saved on any device is instantly available on all others.
+
+**Full documentation**: [TAILSCALE_NEO4J_SETUP.md](TAILSCALE_NEO4J_SETUP.md) (includes troubleshooting, security best practices, and maintenance)
+
 ## Architecture
 
 ```

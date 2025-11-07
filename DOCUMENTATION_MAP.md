@@ -32,6 +32,7 @@
 |------|---------|-------------|
 | **[README.md](file:///Users/astro/Claude_Code/Claude_Global_Config/README.md)** | Main setup guide for Mac/Linux/Windows | First time setup on ANY device |
 | **[WINDOWS_SETUP.md](file:///Users/astro/Claude_Code/Claude_Global_Config/WINDOWS_SETUP.md)** | Windows-specific instructions | Windows device setup |
+| **[TAILSCALE_NEO4J_SETUP.md](file:///Users/astro/Claude_Code/Claude_Global_Config/TAILSCALE_NEO4J_SETUP.md)** | Share Neo4j knowledge graph across devices | Advanced: Multi-device knowledge graph sync |
 | **[plugins_manifest.json](file:///Users/astro/Claude_Code/Claude_Global_Config/plugins_manifest.json)** | Plugin installation list (7 plugins) | Auto-read by setup scripts |
 | **THIS FILE** | Navigation hub for all docs | Finding documentation |
 
@@ -56,6 +57,8 @@
 | **[setup-device.sh](file:///Users/astro/Claude_Code/Claude_Global_Config/tools/setup-device.sh)** | Mac/Linux | Automated setup: symlinks + plugins |
 | **[setup-windows.ps1](file:///Users/astro/Claude_Code/Claude_Global_Config/tools/setup-windows.ps1)** | Windows | Automated setup: junctions + plugins |
 | **[device-context.sh](file:///Users/astro/Claude_Code/Claude_Global_Config/tools/device-context.sh)** | Mac/Linux | Environment detection utility |
+| **[sync-skills.sh](file:///Users/astro/Claude_Code/Claude_Global_Config/tools/sync-skills.sh)** | Mac/Linux | Bidirectional skills sync tool |
+| **[tailscale-neo4j-setup.sh](file:///Users/astro/Claude_Code/Claude_Global_Config/tools/tailscale-neo4j-setup.sh)** | Mac/Linux | Tailscale + Neo4j configuration helper |
 
 **What They Do**:
 1. Clone Git repo
